@@ -1,4 +1,4 @@
-name: My Go queries
+name: my-go-queries
 version: 0.0.0
 libraryPathDependencies:
   - codeql-go
