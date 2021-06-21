@@ -44,10 +44,18 @@ jobs:
         languages: ${{ matrix.language }}
         #config-file: .github/codeql/codeql-config.yml
 
+    - run: |
+        echo "java version"
+        java -version
+
     - if: matrix.language == 'java'  
-      uses: actions/setup-java@v1.4.3
+      uses: actions/setup-java@v1
       with:
-        java-version: 12
+        java-version: 13
+
+    - run: |
+        echo "java version"
+        java -version
 
     - if: matrix.language == 'java'  
       name: Autobuild
