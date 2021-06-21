@@ -39,10 +39,10 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@33bb16c8b4cd7f6ace8b7f21f9d693f63e832a18
+      uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
-        config-file: .github/codeql/codeql-config.yml
+        #config-file: .github/codeql/codeql-config.yml
 
     - if: matrix.language == 'java'  
       name: Autobuild
