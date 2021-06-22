@@ -51,7 +51,7 @@ jobs:
     - if: matrix.language == 'java'  
       uses: actions/setup-java@v1
       with:
-        java-version: 13
+        java-version: 15
 
     - run: |
         echo "java version"
