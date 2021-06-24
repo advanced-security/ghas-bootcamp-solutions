@@ -76,3 +76,25 @@ jobs:
         name: sarif
         path: code-scanning-results
         retention-days: 7
+
+    - name: Zip up CodeQL database
+      id: database-cleanup
+      env:
+        LANGUAGE: ${{ matrix.language }}
+      run: |
+        set -xu
+        DATABASE_DIR="/home/runner/work/_temp/codeql_databases/$LANGUAGE"
+        echo "Cleaning up database in $DATABASE_DIR"
+        for SUB_DIR in log results working; do
+          rm -rf $DATABASE_DIR/$SUB_DIR
+        done
+        echo "Zipping database"
+        DATABASE_ZIP="semmle-code-$LANGUAGE-db.zip"
+        zip -r "$DATABASE_ZIP" "$DATABASE_DIR"
+        echo "::set-output name=zip::$DATABASE_ZIP"
+
+    - name: Upload CodeQL database
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.language }}-db
+        path: ${{ steps.database-cleanup.outputs.zip }}
