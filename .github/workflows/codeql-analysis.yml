@@ -69,6 +69,7 @@ jobs:
     - name: echo something
       run: |
         echo $SRCROOT
+        echo ${{ runner.temp }}
 
     - name: Upload SARIF as a Build Artifact
       uses: actions/upload-artifact@v2.2.0
