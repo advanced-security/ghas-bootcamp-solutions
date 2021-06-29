@@ -10,3 +10,4 @@
 - exclude:
     id:
     - java/spring-disabled-csrf-protection
+    - java/insecure-cookie
