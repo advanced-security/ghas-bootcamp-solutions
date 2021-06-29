@@ -4,7 +4,7 @@ disable-default-queries: true
 
 queries:
     - uses: ./custom-queries/code-scanning.qls
-    - uses: security-and-quality
+#     - uses: security-and-quality
     - uses: ./custom-queries/go
 
 # paths-ignore: 
