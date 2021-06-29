@@ -1,7 +1,7 @@
 /**
 * @name Missing token verification
 * @description Missing token verification
-* @id go/user-controlled-bypass
+* @id go/missing-jwt-verification
 * @kind problem
 * @problem.severity warning
 * @precision high
