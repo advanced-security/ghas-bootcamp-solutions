@@ -65,28 +65,23 @@ jobs:
       uses: github/codeql-action/analyze@v1
       with:
         output: code-scanning-results
-        
-    - name: echo something
-      run: |
-        echo $SRCROOT
-        echo ${{ runner.temp }}
 
-    - name: Upload SARIF as a Build Artifact
+    - name: Upload SARIF as a build artifact
       uses: actions/upload-artifact@v2.2.0
       with:
         name: sarif
         path: code-scanning-results
         retention-days: 7
 
-    - name: Zip up CodeQL database
+    - name: Upload CodeQL database
       id: codeql-database-bundle
       env:
         LANGUAGE: ${{ matrix.language }}
       run: |
         set -xu
         DATABASE_DIR="/home/runner/work/_temp/codeql_databases/$LANGUAGE"
-        /opt/hostedtoolcache/CodeQL/0.0.0-20210517/x64/codeql/codeql database bundle $DATABASE_DIR --output='codeql-database-$LANGUAGE.zip'
-
+        /opt/hostedtoolcache/CodeQL/0.0.0-20210517/x64/codeql/codeql database bundle $DATABASE_DIR --output="codeql-database-$LANGUAGE.zip"
+        
     - name: Upload CodeQL database
       uses: actions/upload-artifact@v2
       with:
